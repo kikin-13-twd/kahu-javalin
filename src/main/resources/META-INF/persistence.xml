@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+             https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+  <persistence-unit name="kahuPU" transaction-type="RESOURCE_LOCAL">
+
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+    <!-- Entidades -->
+    <class>com.kahu.entity.Rol</class>
+    <class>com.kahu.entity.Usuario</class>
+    <class>com.kahu.entity.Especie</class>
+    <class>com.kahu.entity.Raza</class>
+    <class>com.kahu.entity.Animal</class>
+    <class>com.kahu.entity.PublicacionAdopcion</class>
+    <class>com.kahu.entity.SolicitudAdopcion</class>
+    <class>com.kahu.entity.TipoConsulta</class>
+    <class>com.kahu.entity.Servicio</class>
+    <class>com.kahu.entity.Cita</class>
+    <class>com.kahu.entity.ReporteClinico</class>
+    <class>com.kahu.entity.CatalogoVacuna</class>
+    <class>com.kahu.entity.Vacunacion</class>
+
+    <properties>
+      <!-- Conexion MySQL (valores reales se inyectan desde AppConfig / .env) -->
+      <property name="jakarta.persistence.jdbc.driver"   value="com.mysql.cj.jdbc.Driver"/>
+      <property name="jakarta.persistence.jdbc.url"      value=""/>
+      <property name="jakarta.persistence.jdbc.user"     value=""/>
+      <property name="jakarta.persistence.jdbc.password" value=""/>
+
+      <!-- HikariCP como pool de conexiones -->
+      <property name="hibernate.connection.provider_class"
+                value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider"/>
+      <property name="hibernate.hikari.minimumIdle"       value="3"/>
+      <property name="hibernate.hikari.maximumPoolSize"   value="10"/>
+      <property name="hibernate.hikari.idleTimeout"       value="30000"/>
+
+      <!-- Hibernate -->
+      <property name="hibernate.dialect"                  value="org.hibernate.dialect.MySQLDialect"/>
+      <property name="hibernate.hbm2ddl.auto"             value="validate"/>
+      <property name="hibernate.show_sql"                 value="false"/>
+      <property name="hibernate.format_sql"               value="true"/>
+    </properties>
+
+  </persistence-unit>
+
+</persistence>
