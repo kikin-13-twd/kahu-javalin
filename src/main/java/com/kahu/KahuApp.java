@@ -95,7 +95,8 @@ public class KahuApp {
 
         log.info("Kahu API corriendo en http://localhost:{} (env={})", port, env.getAppEnv());
     }
-
+    // Configura el manejo centralizado de excepciones de la aplicación,
+// devolviendo respuestas JSON consistentes según el tipo de error.
     private static void registerExceptionHandlers(Javalin app) {
         app.exception(UnauthorizedException.class, (e, ctx) -> {
             log.warn("{} {} -> 401: {}", ctx.method(), ctx.path(), e.getMessage());
